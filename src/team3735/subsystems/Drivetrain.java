@@ -15,20 +15,17 @@ import team3735.commands.driveWithJoy;
  * @author Developer
  */
 public class Drivetrain extends Subsystem {
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+
     RobotDrive drive = new RobotDrive(RobotMap.frontLeftMotor,RobotMap.rearLeftMotor,RobotMap.frontRightMotor, RobotMap.rearRightMotor);
 
     public Drivetrain()
     {
     }
-    public void driveWithJoy(double y, double x)
+    public void move(double y, double x)
     {
         drive.arcadeDrive(y,x,false);
     }
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
         setDefaultCommand(new driveWithJoy());
     }
 }

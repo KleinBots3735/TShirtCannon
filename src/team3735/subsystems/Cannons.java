@@ -6,7 +6,6 @@ package team3735.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import team3735.templates.RobotMap;
 
 /**
  *
@@ -21,7 +20,7 @@ public class Cannons extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-     public void shootBarrel(DigitalOutput barrel) //specify barrel. real code
+    public void shootBarrel(DigitalOutput barrel) //specify barrel. real code
     {
         barrel.set(true);
         try{
@@ -31,31 +30,5 @@ public class Cannons extends Subsystem {
             Thread.currentThread().interrupt();
         }
         barrel.set(false);
-    }
-    /* fake ass code
-    public void shootBarrelOne()
-    {
-        RobotMap.barrelOne.set(true);
-        try{
-            Thread.sleep(5000);
-        }
-        catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
-        RobotMap.barrelOne.set(false);
-    }
-    public void shootBarrelTwo()
-    {
-        RobotMap.barrelTwo.set(true);
-    }
-    public void closeBarrelOne()
-    {
-        RobotMap.barrelOne.set(false);
-    }
-    public void closeBarrelTwo()
-    {
-        RobotMap.barrelTwo.set(false);
-    }
-    */
-        
+    }   
 }
