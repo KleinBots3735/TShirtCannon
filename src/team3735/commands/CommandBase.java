@@ -2,8 +2,10 @@ package team3735.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import team3735.subsystems.Cannons;
+import team3735.subsystems.Drivetrain;
+import team3735.subsystems.Theta;
 import team3735.templates.OI;
-import team3735.subsystems.ExampleSubsystem;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -15,7 +17,9 @@ public abstract class CommandBase extends Command {
 
     public static OI oi;
     // Create a single static instance of all of your subsystems
-    public static ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+    public static Drivetrain drive = new Drivetrain();   
+    public static Theta angle = new Theta();
+    public static Cannons cannon = new Cannons();
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely
@@ -26,7 +30,7 @@ public abstract class CommandBase extends Command {
         oi = new OI();
 
         // Show what command your subsystem is running on the SmartDashboard
-        SmartDashboard.putData(exampleSubsystem);
+        SmartDashboard.putData(drive);
     }
 
     public CommandBase(String name) {

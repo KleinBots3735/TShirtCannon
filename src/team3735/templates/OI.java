@@ -1,44 +1,55 @@
 
 package team3735.templates;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import team3735.commands.angleDown;
+import team3735.commands.angleUp;
+import team3735.commands.shootCannon;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-    //// CREATING BUTTONS
-    // One type of button is a joystick button which is any button on a joystick.
-    // You create one by telling it which joystick it's on and which button
-    // number it is.
-    // Joystick stick = new Joystick(port);
-    // Button button = new JoystickButton(stick, buttonNumber);
+    public static Joystick PILOT_CONTROLLER = new Joystick(RobotMap.JOYSTICK_PORT);
+    public static Joystick COPILOT_CONTROLLER = new Joystick(RobotMap.CONTROL_PORT);
     
-    // Another type of button you can create is a DigitalIOButton, which is
-    // a button or switch hooked up to the cypress module. These are useful if
-    // you want to build a customized operator interface.
-    // Button button = new DigitalIOButton(1);
+    public Button one = new JoystickButton(PILOT_CONTROLLER,1);
+    public Button two = new JoystickButton(PILOT_CONTROLLER,2);
+    public Button three = new JoystickButton(PILOT_CONTROLLER,3);
+    public Button four = new JoystickButton(PILOT_CONTROLLER,4);
+    public Button five = new JoystickButton(PILOT_CONTROLLER,5);
+    public Button six = new JoystickButton(PILOT_CONTROLLER,6);
+    public Button seven = new JoystickButton(PILOT_CONTROLLER,7);
+    public Button eight = new JoystickButton(PILOT_CONTROLLER,8);
     
-    // There are a few additional built in buttons you can use. Additionally,
-    // by subclassing Button you can create custom triggers and bind those to
-    // commands the same as any other Button.
+//    
+    public OI () {
+       one.whenPressed(new shootCannon(RobotMap.barrelOne));
+       two.whenPressed(new shootCannon(RobotMap.barrelTwo));
+       three.whenPressed(new shootCannon(RobotMap.barrelThree));
+       five.whileHeld(new angleUp());
+       six.whileHeld(new angleDown());
+    }
     
-    //// TRIGGERING COMMANDS WITH BUTTONS
-    // Once you have a button, it's trivial to bind it to a button in one of
-    // three ways:
-    
-    // Start the command when the button is pressed and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenPressed(new ExampleCommand());
-    
-    // Run the command while the button is being held down and interrupt it once
-    // the button is released.
-    // button.whileHeld(new ExampleCommand());
-    
-    // Start the command when the button is released  and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenReleased(new ExampleCommand());
+    public Joystick getStick()
+    {
+        return PILOT_CONTROLLER;
+    }
+    public double getStickX()
+    {
+        return PILOT_CONTROLLER.getX();
+    }
+    public double getStickY()
+    {
+        return PILOT_CONTROLLER.getY();
+    }   
+    public double getStickZ()
+    {
+        return PILOT_CONTROLLER.getZ();
+    }
 }
 
