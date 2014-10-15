@@ -14,8 +14,8 @@ import team3735.commands.shootCannon;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-    public static Joystick PILOT_CONTROLLER = new Joystick(RobotMap.JOYSTICK_PORT);
-    public static Joystick COPILOT_CONTROLLER = new Joystick(RobotMap.CONTROL_PORT);
+    public static Joystick PILOT_CONTROLLER = new Joystick(RobotMap.PILOTSTICK_PORT);
+    public static Joystick COPILOT_CONTROLLER = new Joystick(RobotMap.COPILOTSTICK_PORT);
     
     public Button one = new JoystickButton(PILOT_CONTROLLER,1);
     public Button two = new JoystickButton(PILOT_CONTROLLER,2);
